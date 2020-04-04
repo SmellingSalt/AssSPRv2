@@ -1,0 +1,51 @@
+
+
+
+\chapter{Introduction}
+\chaptermark{ Introduction}
+\HRule \\[-0.5cm] % Horizontal line
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+\lhead{\emph{\textbf{Chapter1:} Introduction}} % This is for the header on each page - perhaps a shortened title
+ 
+%----------------------------------------------------------------------------------------
+%	SECTIONS
+%----------------------------------------------------------------------------------------
+
+
+
+
+
+\begin{spacing}{1.5}
+\section{Evolution: Feedback Neural Network to Restricted Boltzmann Machine}
+%\subsection{Background}
+Neural networks can be used for various tasks right from pattern storage to pattern classification with appropriate selection of weights and network topology/architecture. \\
+%%=====================================================================
+\subsection{Feedback Neural Network and its limitations}
+Feedback neural network~(FBNN) are a class of neural networks where the output of each processing unit/neuron acts as input to all other processing units and to itself. The amount of information that acts as input to the units is weighted by the strength of the link between the units. By choosing appropriate parameters for this network it can be used to perform tasks like auto-association. \\
+The main goal of auto-associative networks is to learn the pattern associated with input in training phase and recall the pattern when erroneous or noisy version of input is fed to the network during the testing phase i.e. it should possess accretive behavior. If the processing units in the FBNN are linear this behavior cannot be achieved as an erroneous input will lead to the generation of erroneous output instead of pattern recall. This drawback can be overcome by replacing the linear processing units with non-linear processing units. Hence, the FBNN with non-linear processing units can be used for the task of pattern storage.  \\
+The task of pattern storage involves learning the features and spatial relationship between the features associated with the input with the aim of recollecting the exact input pattern when an approximate version of the pattern is provided as input to the network. 
+If we consider the output (depends on weights and biases) of each unit as energy of that unit/state, the path that state traverses in the energy landscape (energy as a function of state)  at successive instants of time can be termed as the trajectory of that sate.  The trajectory is determined by the activation dynamics model used for the network. \\
+When an input is applied to the network, the activation dynamics is applied to input continuously till it reaches an equilibrium state. Theses equilibrium states are the minimum energy points explored to store the patterns in the network during the pattern storage task. It is the presence of these energy minima’s that help in pattern retrieval when an approximate version of input is fed to the network. \\
+The two parameters that need to be evaluated in FBNN are error in recall and the capacity of the network.
+The error in recall occurs when the network recollects a wrong pattern when fed with noisy input. This can reduced by adjusting the weights of the network to ensure that the energy landscape of the network matches the probability distribution of the pattern to be stored.
+Capacity of the network is defined as the number of patterns a network can store. It depends on the number of processing units available in the network. If the network has $N$ binary processing units, though it can have $2^N$ states, the network can store only $N$ binary patterns as the network will have only $N$ minimum energy states. Hence, the capacity of the network is determined by the number of processing units and their interconnections in the network. \\
+If the number of patterns to be stored are more than the number of energy minima’s it is a hard problem and if the number of minima’s are more than the number of patterns to be stored there will be increase in false wells which in turn leads to increase in error in recall.
+%To overcome the hard storage problem and reduce the error in recall Hopfield model was introduced.\\
+
+%%=====================================================================
+\subsection{Hopfield Model}
+Hopfield model is a fully connected~(FC) FBNN with symmetric weights and no self-loop. The weights are updated asynchronously and the energy associated with each of the state reduces or remains same as the state of the network changes. The number of patterns to be stored is limited and is of the order of number of units.\\
+Based on the rule used to update the states and output function of each unit, the Hopfiled Model can be continuous or discrete.
+Discrete Hopfield model the state update is synchronous and the output function can be binary/bipolar whereas in a continuous Hopfield model the states are updated by activation dynamics and output function is continuous and non-linear.
+
+%%=====================================================================
+%\subsection{Hard Problem: Need of Hidden units and Stochastic update}
+\subsection{Boltzmann machine and Restricted Boltzmann machine}
+In Boltzmann machine, the errors in recall due to false minima is resolved by updating the states stochastically and asynchronously. Also, the probability distribution of patterns are considered while designing the energy minima so that the given patterns correspond to the lowest energy minima in the network. \\
+The hard problem in the pattern storage task is handled by introducing additional units in the feedback network called hidden units. The units where input is applied are called visible units.
+
+Though the Boltzmann machine appear to solve the pattern storage problem they are slow and difficult to train. Hence, Restricted Boltzmann machine was introduced. Restricted Boltzmann machines do not have connection in between the units of the same layer. Hence, easier to train as compared to Boltzmann machine.
+% \section{Summary}
+\end{spacing} 
